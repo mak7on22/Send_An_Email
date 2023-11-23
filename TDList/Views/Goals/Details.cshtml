@@ -1,0 +1,85 @@
+﻿@model TDList.Models.Goal
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Localizer["Детали"]</h1>
+
+<div class="details-container">
+    <div class="details-main">
+        <h4>@Localizer["Задача"]</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Localizer[@Html.DisplayNameFor(model => model.Name)]
+            </dt>
+            <dd class="col-sm-10">
+                 @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer[ @Html.DisplayNameFor(model => model.Priority)]
+            </dt>
+            <dd class="col-sm-10">
+                 @Html.DisplayFor(model => model.Priority)
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer[@Html.DisplayNameFor(model => model.Status)]
+            </dt>
+            <dd class="col-sm-10">
+                @Localizer[@Model.Status]
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer[ @Html.DisplayNameFor(model => model.UserName)]
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer[ @Html.DisplayNameFor(model => model.Created)]
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+            @if (Model.Status == "Завершена" || Model.Status == "В процессе")
+            {
+                <dt class="col-sm-2">
+                    @Localizer[ @Html.DisplayNameFor(model => model.Started)]
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Started)
+                </dd>
+            }
+            @if (Model.Status == "Завершена")
+            {
+                <dt class="col-sm-2">
+                    @Localizer[ @Html.DisplayNameFor(model => model.Ended)]
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Ended)
+                </dd>
+            }
+        </dl>
+    </div>
+    <div class="details-description">
+        <h4> @Localizer["Описание"]</h4>
+        <hr />
+        @Html.DisplayFor(model => model.Description)
+        <div class="details-btn">
+            @if (Model.Status == "Новая")
+            {
+               <button class="btnsgr bbgr"> <a class="agr" asp-action="Start" asp-route-id="@Model.Id">@Localizer["Начать"] </a> </button>
+            }
+            @if (Model.Status == "В процессе")
+            {
+               <button class="btnsye bbye"> <a class="aye" asp-action="Complete" asp-route-id="@Model.Id">@Localizer["В процессе"] </a></button>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="fg">
+   <button class="btns bb"> <a asp-action="Edit" asp-route-id="@Model?.Id">@Localizer["Изменить"]</a> </button>
+   <button class="btnsbac bbbac"> <a class="abac" asp-action="Index">@Localizer["Назад"]</a> </button>
+</div>

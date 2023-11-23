@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scrollable-list ">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - TDList</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/TDList.styles.css" asp-append-version="true"/>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Goals" asp-action="Index">@Localizer["ТД-Лист"]</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                    @if (User.Identity!.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Goals" asp-action="Index">@Localizer["Все задачи"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Goals" asp-action="Create">@Localizer["Добавить новую задачу"]</a>
+                       </li>
+                            <li class="nav-item" style="     display: flex;  align-items: center; margin-left: 10px;  margin-right: 10px;">
+                                <a asp-controller="Users" asp-action="Profile" asp-route-id="@int.Parse(userManager.GetUserId(User))" style="color: azure; font-size: large; font-weight: 700; ">@User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="fffs" method="post" asp-controller="Account" asp-action="LogOff">
+                                    <input style=" border-radius: 20px; border: none; background-color: #d38787; font-weight: 600; color: white;" class="nav-link ssa" type="submit" value="Выход" />
+                                </form>
+                            </li>
+                            
+                    }
+                    else
+                    {
+                            <li class="nav-item ssa">
+                                <a class="nav-link ssa2" asp-area="" asp-controller="Account" asp-action="Login" style="color: #046666; font-size: large; font-weight: 700;">Вход</a>
+                            </li>
+                            <li class="nav-item ssa">
+                                <a class="nav-link ssa2" asp-area="" asp-controller="Account" asp-action="Register" style="color: #046666; font-size: large; font-weight: 700;">Регистрация</a>
+                            </li>
+
+                    }
+                    </ul>
+                    <ul class="navbar-nav" style="margin-right: 147px;">
+                       
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                    @Thread.CurrentThread.CurrentUICulture.Name
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="/Goals/ChangeCulture?culture=ru-RU">
+                                            <img src="/img/ru.png" alt="Русский" style="height: 30px;" />
+                                            @Localizer["Русский"]
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Goals/ChangeCulture?culture=en-US">
+                                            <img src="/img/us.png" alt="English" style="height: 30px;" />
+                                            @Localizer["Английский"]
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Goals/ChangeCulture?culture=zh-CN">
+                                            <img src="/img/ch.png" alt="China" style="height: 30px;" />
+                                            @Localizer["中国人"]
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

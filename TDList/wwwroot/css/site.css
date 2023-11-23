@@ -1,0 +1,687 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-image: url('../fon.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.bg-white {
+  --bs-bg-opacity: 1;
+  background-color: rgba(128, 128, 128, 0.5); /* Прозрачность 0.5 (50%) */
+
+}
+/*////////////////////////////////////////////////////////////*/
+/* Скрыть все блоки кроме первого */
+.panel {
+    display: none;
+}
+
+/* Стили аккордеона */
+.accordion {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+    .accordion:hover {
+        background-color: #555;
+    }
+
+/* Стили для открытого аккордеона */
+.active {
+    background-color: #555;
+}
+
+/* Иконка для аккордеона */
+.accordion:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+.sdf{
+    width: 600px;
+    height: 200px;
+}
+.active:after {
+    content: "\2212";
+}
+/*//////////////////////////////////////////////////////////*/
+.dlt{
+    color: #fff;
+}
+a{
+    text-decoration:none;
+    color: #ffffff;
+}
+.details-btn {
+    padding: 20px;
+}
+
+.details-container {
+    display: flex;
+}
+
+.details-main {
+    flex: 1;
+    padding-right: 20px; /* Добавляем отступ между основной информацией и описанием */
+    color: #fff;
+}
+
+.details-description {
+    flex: 1;
+    color: #fff;
+}
+
+.high-priority {
+  color: red;
+  font-weight: bold;
+}
+
+.medium-priority {
+  color: orange;
+  font-weight: bold;
+}
+
+.low-priority {
+  color: green;
+  font-weight: bold;
+}
+.navbar-light .navbar-brand {
+  color: rgb(255 255 255 / 90%);
+  font-weight: 800;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #fff;
+}
+.flex-grow-1 {
+  color: rgb(255 255 255 / 90%);
+  flex-grow: 1!important;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+}
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-accent-bg: transparent;
+  --bs-table-striped-color: #212529;
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+  --bs-table-active-color: #212529;
+  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+  --bs-table-hover-color: #212529;
+  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-weight: 500;
+  vertical-align: top;
+  border-color: #dee2e6;
+}
+.nav-link:hover {
+  border-radius:30px;
+  background-color: #fff; /* Белый фон при наведении */
+  color: #000; /* Можно также изменить цвет текста при наведении */
+}
+.as{
+    text-decoration: none;
+    color: darkorange;
+}
+.as:hover{
+    color: #fff;
+}
+.nn{
+  color: #fff;
+}
+.gr
+{
+    border: 3px ridge #09c700;
+    color: #78d600;
+}
+
+/*////////////////////////////////////////////////*/
+.btns {
+    width: 10em;
+    position: relative;
+    height: 3.5em;
+    border: 3px ridge #149CEA;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btns::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+    transform-origin: center;
+}
+
+.btns::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+}
+
+.btns:hover::before, button:hover::after {
+    transform: scale(0)
+}
+.bb{
+        width: 6em;
+        position: relative;
+        height: 2.5em;
+        border: 3px ridge #149CEA;
+        outline: none;
+        background-color: transparent;
+        color: white;
+        transition: 1s;
+        border-radius: 0.3em;
+        font-size: 16px;
+        font-weight: bold;
+}
+.btns:hover {
+    box-shadow: inset 0px 0px 25px #1479EA;
+}
+/*///////////////////////////////////////////////*/
+
+
+/*////////////////////////////////////////////////*/
+.btnsgr {
+    width: 10em;
+    position: relative;
+    height: 3.5em;
+    border: 3px ridge #2BB400FF;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnsgr:hover
+{
+    color: #2BB400FF;
+}
+.agr:hover{
+    color: #2BB400FF;
+}
+
+.btnsgr::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+    transform-origin: center;
+}
+
+.btnsgr::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+}
+
+.btnsgr:hover::before, button:hover::after {
+    transform: scale(0)
+}
+.bbgr{
+    width: 6em;
+    position: relative;
+    height: 2.5em;
+    border: 3px ridge #2BB400FF;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnsgr:hover {
+    box-shadow: inset 0px 0px 25px #2bb400;
+}
+/*///////////////////////////////////////////////*/
+/*////////////////////////////////////////////////*/
+.btnsye {
+    width: 10em;
+    position: relative;
+    height: 3.5em;
+    border: 3px ridge #D2A700FF;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnsye:hover
+{
+    color: #D2A700FF;
+}
+.aye:hover{
+    color: #D2A700FF;
+}
+
+.btnsye::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+    transform-origin: center;
+}
+
+.btnsye::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+}
+
+.btnsye:hover::before, button:hover::after {
+    transform: scale(0)
+}
+.bbye{
+    width: 7em;
+    position: relative;
+    height: 2.5em;
+    border: 3px ridge #D2A700FF;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnsye:hover {
+    box-shadow: inset 0px 0px 25px #d2a700;
+}
+/*///////////////////////////////////////////////*/
+
+/*////////////////////////////////////////////////*/
+.btnsdel {
+    width: 10em;
+    position: relative;
+    height: 3.5em;
+    border: 3px ridge #fc0000;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnsdel:hover
+{
+    color: #fc0000;
+}
+.adel:hover{
+    color: #fc0000;
+}
+
+.btnsdel::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+    transform-origin: center;
+}
+
+.btnsdel::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+}
+
+.btnsdel:hover::before, button:hover::after {
+    transform: scale(0)
+}
+.bbdel{
+    width: 6em;
+    position: relative;
+    height: 2.5em;
+    border: 3px ridge #fc0000;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnsdel:hover {
+    box-shadow: inset 0px 0px 25px #fc0000;
+}
+/*///////////////////////////////////////////////*/
+/*////////////////////////////////////////////////*/
+.btnsdet {
+    width: 10em;
+    position: relative;
+    height: 3.5em;
+    border: 3px ridge #00ffbb;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnsdet:hover
+{
+    color: #00ffbb;
+}
+.adet:hover{
+    color: #00ffbb;
+}
+
+.btnsdet::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+    transform-origin: center;
+}
+
+.btnsdet::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+}
+
+.btnsdet:hover::before, button:hover::after {
+    transform: scale(0)
+}
+.bbdet{
+    width: 6em;
+    position: relative;
+    height: 2.5em;
+    border: 3px ridge #00ffbb;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnsdet:hover {
+    box-shadow: inset 0px 0px 25px #00ffbb;
+}
+/*///////////////////////////////////////////////*/
+
+/*////////////////////////////////////////////////*/
+.btnsbac {
+    width: 10em;
+    position: relative;
+    height: 3.5em;
+    border: 3px ridge #00fa7d;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnsbac:hover
+{
+    color: #00FA7DFF;
+}
+.abac:hover{
+    color: #00FA7DFF;
+}
+
+.btnsbac::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+    transform-origin: center;
+}
+
+.btnsbac::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: transparent;
+    transition: 0.5s;
+}
+
+.btnsbac:hover::before, button:hover::after {
+    transform: scale(0)
+}
+.bbbac{
+    width: 6em;
+    position: relative;
+    height: 2.5em;
+    border: 3px ridge #00FA7DFF;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btnsbac:hover {
+    box-shadow: inset 0px 0px 25px #00FA7DFF;
+}
+/*///////////////////////////////////////////////*/
+
+.fg{
+    display: flex;
+    gap: 15px;
+}
+.opa{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+textarea {
+  resize: none;
+}
+.textss{
+  border: 1px solid #fff;
+  /*display: flex;*/
+  /*flex-wrap: nowrap;*/
+  /*flex-direction: row;*/
+  /*justify-content: space-around;*/
+}
+.active {
+    background-color: transparent;
+}
+.active:after {
+    content: none;
+}
+
+
+
+.scrollable-list {
+    max-height: 200px; /* Óñòàíîâèòå ìàêñèìàëüíóþ âûñîòó, ïðè êîòîðîé ïîÿâèòñÿ ïîëîñà ïðîêðóòêè */
+    overflow-y: auto; /* Âêëþ÷èòü âåðòèêàëüíóþ ïîëîñó ïðîêðóòêè ïðè íåîáõîäèìîñòè */
+}
+
+.scrollable-list::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f9f9fd;
+}
+
+.scrollable-list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #18aaaa;
+}
+
+.scrollable-list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+/* Ñòèëèçàöèÿ ïîëîñû ïðîêðóòêè (ñêðîëëáàðà) */
+.scrollable-list::-webkit-scrollbar {
+    width: 12px; /* Øèðèíà ñêðîëëáàðà */
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+}
+
+/* Ñòèëèçàöèÿ ñêðîëëáàðà ïðè íàâåäåíèè */
+.scrollable-list::-webkit-scrollbar-thumb:hover {
+    background-color: #888; /* Öâåò ïðè íàâåäåíèè */
+}
+
+/* Ñòèëèçàöèÿ ñêðîëëáàðà */
+.scrollable-list::-webkit-scrollbar-thumb {
+    background-color: #999; /* Îñíîâíîé öâåò ñêðîëëáàðà */
+    border-radius: 20px; /* Çàêðóãëåíèå óãëîâ */
+}
+.page-link {
+    margin-top: 10px;
+    padding: 0.375rem 0.75rem;
+}
+.sds{
+    color: #fff;
+}
+.eboform{
+    display: flex;
+    gap: 15px;
+}
+
+/*................................................................*/
+.input {
+    padding: 10px;
+    width: 202px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 1px  gray;
+    font-size: 18px;
+    transition: width 0.3s;
+    font-family: Consolas,monaco,monospace;
+}
+
+.input:focus {
+    outline: 1px solid blue;
+    box-shadow: none;
+    width: 230px;
+}
+
+.input::placeholder {
+    color: blue;
+}
+
+.fack{
+    margin-top: 46px;
+    display: inline-block;
+}
+
+.filter-accordion{
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+.input-wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+    
+}
+.asds{
+    display: flex;
+    flex-direction: column;
+}
+.rtr{
+    padding: 6px 12px;
+    margin: 0px 0px 0px 10px;
+}
+.rttr{
+    padding: 6px 12px;
+    margin: 0px 10px 0px 0px;
+}

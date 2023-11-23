@@ -1,0 +1,56 @@
+﻿@model TDList.ViewModels.LoginViewModel
+
+
+@{
+    ViewData["Title"] = "Login";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TDList</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/RegLog.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TDList.styles.css" asp-append-version="true" />
+</head>
+
+
+<div class="container">
+    <h1>TDList</h1>
+    <h2>Вход</h2>
+    <form class="form" method="post" asp-controller="Account" asp-action="Login">
+        <div asp-validation-summary="ModelOnly"></div>
+        <fieldset class="form-fieldset ui-input __second">
+            <input type="text" placeholder="Логин или ваш Email" id="email" tabindex="0" asp-for="Email" />
+            <label for="email" asp-for="Email">
+                <span data-text="E-mail Address" asp-validation-for="Email">E-mail адрес</span>
+            </label>
+        </fieldset>
+
+        <fieldset class="form-fieldset ui-input __third">
+            <input type="password" placeholder="Ваш пароль" id="new-password" asp-for="Password" />
+            <label for="new-password" asp-for="Password">
+                <span data-text="New Password" asp-validation-for="Password">Введите пароль</span>
+            </label>
+        </fieldset>
+
+
+        <fieldset class="form-fieldset ui-input __fourth">
+            <label class="containers" asp-for="RememberMe">
+                <input type="checkbox" asp-for="RememberMe"><p>Запомнить?</p>
+                <svg viewBox="0 0 64 64" height="2em" width="2em">
+                    <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="path"></path>
+                </svg>
+            </label>
+        </fieldset>
+
+        <div class="form-footer">
+            <button type="submit" class="btn">Войти</button>
+        </div>
+    </form>
+</div>
+<script src="~/js/RegLog.js" asp-append-version="true"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,50 @@
+﻿@model TDList.Models.Goal
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@Localizer["Создание Задачи"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+      <form asp-action="Create" method="post">
+                <div class="form-group">
+                    <label class="nn" asp-for="Name">@Localizer["Название"]</label>
+                    <input asp-for="Name" class="form-control"  />
+                </div>
+                
+                <div class="form-group">
+                    <label  class="nn" asp-for="Priority">@Localizer["Приоритет"]</label>
+                    <select asp-for="Priority" class="form-control">
+                        <option value="High" class="high-priority">@Localizer["Высокий"]</option>
+                        <option value="Medium" class="medium-priority">@Localizer["Средний"]</option>
+                        <option value="Low" class="low-priority">@Localizer["Низкий"]</option>
+                    </select>
+                    <span asp-validation-for="Priority" class="text-danger"></span>
+                </div>
+            
+                <div class="form-group">
+                    <label class="nn" asp-for="Description">@Localizer["Описание"]</label>
+                    <textarea asp-for="Description" class="form-control sdf scrollable-list "></textarea>
+                </div>
+            <div class="form-group">
+                <label class="nn" asp-for="UserName">@Localizer["Исполнитель"]</label>
+                <input asp-for="UserName" class="form-control" />
+            </div>
+          <div class="opa">
+          <button class="btnsgr bbgr"> <a class="agr" type="submit" value="Сохранить">@Localizer["Создать"]</a></button>
+          </div>
+            </form>
+    </div>
+</div>
+
+<div>
+    <button class="btnsbac bbbac"> <a class="abac" asp-action="Index">@Localizer["Назад"]</a> </button>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

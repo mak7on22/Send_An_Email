@@ -1,0 +1,142 @@
+﻿@model IEnumerable<TDList.Models.Goal>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Index";
+    string statusError1 = ViewData["StatusError1"] as string;
+    string statusError2 = ViewData["StatusError2"] as string;
+    string statusError3 = ViewData["StatusError3"] as string;
+    string statusError4 = ViewData["StatusError4"] as string;
+    Pager pager = new Pager();
+    int pageNo = 0;
+    if(ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<h1>@Localizer["Задачи"]</h1>
+<div class="filter-accordion">
+    <div class="fack">
+        <button class="accordion">@Localizer["Поиск"]</button>
+        <div class="panel">
+            <form asp-action="Index" method="get" class="eboform">
+                <div class="input-wrapper">
+                    <input type="text" name="searchWords" placeholder="@Localizer["Название задачи"]" class="input">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="fack">
+        <button class="accordion">@Localizer["Дата"]</button>
+        <div class="panel">
+            <form asp-action="Index" method="get" class="eboform">
+                <div class="input-wrapper">
+                    <label class="sds" for="startDate">@Localizer["Дата начала:"]</label>
+                    <input type="datetime-local" id="startDate" name="startDate" class="input Gas">
+                </div>
+                <div class="input-wrapper">
+                    <label class="sds" for="endDate">@Localizer["Дата окончания:"]</label>
+                    <input type="datetime-local" id="endDate" name="endDate" class="input Gas">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="fack">
+        <button class="accordion">@Localizer["Приоритет"]</button>
+        <div class="panel">
+            <form method="get" asp-action="Index" class="eboform asds">
+                <div class="form-group">
+                    <label class="nn">@Localizer["Приоритет"]</label>
+                    <select name="pr" class="form-control rttr">
+                        <option value="All">@Localizer["Все"]</option>
+                        <option value="High" class="high-priority">@Localizer["Высокий"]</option>
+                        <option value="Medium" class="medium-priority">@Localizer["Средний"]</option>
+                        <option value="Low" class="low-priority">@Localizer["Низкий"]</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary rttr">@Localizer["Применить фильтр"]</button>
+            </form>
+        </div>
+    </div>
+    <div class="fack">
+        <button class="accordion">@Localizer["Статус"]</button>
+        <div class="panel">
+            <form method="get" asp-action="Index" class="eboform asds">
+                <div class="form-group">
+                    <label class="nn">@Localizer["Статус"]</label>
+                    <select name="st" class="form-control rtr">
+                        <option value="All">@Localizer["Все"]</option>
+                        <option value="Новая" class="new">@Localizer["Новая"]</option>
+                        <option value="В процессе" class="in-progress">@Localizer["В процессе"]</option>
+                        <option value="Завершена" class="closed">@Localizer["Завершена"]</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary rtr">@Localizer["Применить фильтр"]</button>
+            </form>
+        </div>
+        </div>
+</div>
+<partial name="_pager" model="@pager" />
+<div class="tablo">
+<table class="table">
+    <thead>
+    <tr>
+        <th class="textss">
+                    <a class="as" asp-action="Index" asp-route-sortState="@ViewBag.NameSort">@Localizer[@Html.DisplayNameFor(model => model.Name)]</a>
+        </th>
+        <th class="textss">
+                    <a class="as" asp-action="Index" asp-route-sortState="@ViewBag.PriorityValueSort">@Localizer[@Html.DisplayNameFor(model => model.Priority)]</a>
+        </th>
+        <th class="textss">
+                    <a class="as" asp-action="Index" asp-route-sortState="@ViewBag.StatusValueSort">@Localizer[@Html.DisplayNameFor(model => model.Status)]</a>
+        </th>
+        <th class="textss">
+            @Localizer[@Html.DisplayNameFor(model => model.UserName)]
+        </th>
+        <th class="textss">
+                    <a class="as" asp-action="Index" asp-route-sortState="@ViewBag.CreatedSort">@Localizer[@Html.DisplayNameFor(model => model.Created)]</a>
+        </th>
+        <th class="textss">
+                    @Localizer["Действия"]
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                        <span class="priority-label" data-priority="@item.Priority">@Localizer[item.Priority.ToString()]</span>
+            </td>
+                    <td>
+                        @Localizer[item.Status.ToString()]
+                    </td>
+
+                    <th>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                        <button class="btns bb"> <a asp-action="Edit" asp-route-id="@item.Id">@Localizer["Изменить"]</a></button>
+                        <button class="btnsdet bbdet"> <a class="adet" asp-action="Details" asp-route-id="@item.Id">@Localizer["Детали"]</a> </button>
+                        <button class="btnsdel bbdel"><a class="adel" asp-action="Delete" asp-route-id="@item.Id">@Localizer["Удалить"]</a> </button>
+                @if (item.Status == "Новая")
+                {
+                            <button class="btnsgr bbgr"> <a class="agr" asp-action="Start" asp-route-id="@item.Id">@Localizer["Начать"]</a> </button>
+                } 
+                @if (item.Status == "В процессе")
+                {
+                            <button class="btnsye bbye"> <a class="aye" asp-action="Complete" asp-route-id="@item.Id">@Localizer["В процессе"]</a> </button>
+                } 
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+</div>

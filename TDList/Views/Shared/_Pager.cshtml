@@ -1,0 +1,34 @@
+﻿@model TDList.Models.Pager
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+<div class="container">
+    @if (Model.TotalPages > 0)
+    {
+        <ul class="pagination justify-content-end">
+            @if (Model.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Goals" asp-action="Index" asp-route-pg="1">@Localizer["В начало"]</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Goals" asp-action="Index" asp-route-pg="@(Model.CurrentPage - 1)">@Localizer["Предыдущая"]</a>
+                </li>
+            }
+            @for (var pge = Model.StartPage; pge <= Model.EndPage; pge++)
+            {
+                <li class="page-item @(pge == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-controller="Goals" asp-action="Index" asp-route-pg="@pge">@pge</a>
+                </li>
+            }
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Goals" asp-action="Index" asp-route-pg="@(Model.CurrentPage + 1)">@Localizer["Следующая"]</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Goals" asp-action="Index" asp-route-pg="@Model.TotalPages">@Localizer["В конец"]</a>
+                </li>
+            }
+        </ul>
+    }
+</div>

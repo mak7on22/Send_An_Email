@@ -1,0 +1,81 @@
+﻿@model TDList.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="rows" style=" display: flex; align-items: center; justify-content: space-around;color: white; flex-direction: column;">
+    <div class="col-md-4">
+        <form id="changePasswordForm">
+            <div class="text-danger" id="validationSummary"></div>
+            <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+
+            <div class="form-group">
+                <label for="PasswordHash" class="control-label">Старый пароль</label>
+                <input placeholder="Старый пароль" id="PasswordHash" name="PasswordHash" class="form-control" />
+                <div class="text-danger" id="passwordHashError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="NewPassword" class="control-label">Новый пароль</label>
+                <input placeholder="Новый пароль" id="NewPassword" name="NewPassword" class="form-control" />
+                <div class="text-danger" id="newPasswordError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="ConfirmPassword" class="control-label">Подтвердите новый пароль</label>
+                <input placeholder="Подтвердите новый пароль" id="ConfirmPassword" name="ConfirmPassword" class="form-control" />
+                <div class="text-danger" id="confirmPasswordError"></div>
+            </div>
+
+            <div class="form-group">
+                <input style=" margin-top: 18px;" type="submit" value="Сохранить" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+    <div style="margin-top:20px;">
+        <a class="btn btn-primary" asp-action="Profile">Назад</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('changePasswordForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let id = document.getElementById('Id').value;
+            let oldPassword = document.getElementById('PasswordHash').value;
+            let newPassword = document.getElementById('NewPassword').value;
+            let confirmPassword = document.getElementById('ConfirmPassword').value;
+            if (newPassword !== confirmPassword) {
+                document.getElementById('validationSummary').innerText = 'Новые пароли не совпадают';
+                return;
+            }
+            let formData = {
+                Id: id,
+                PasswordHash: oldPassword,
+                NewPassword: newPassword,
+            };
+            fetch('@Url.Action("ChangePassword", "Users")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = '@Url.Action("Index", "Goals")';
+                    } else {
+                        document.getElementById('validationSummary').innerText = data.message;
+                        document.getElementById('passwordHashError').innerText = data.errors.PasswordHash;
+                        document.getElementById('newPasswordError').innerText = data.errors.NewPassword;
+                        document.getElementById('confirmPasswordError').innerText = data.errors.ConfirmPassword;
+                    }
+                })
+                .catch(error => console.error('Ошибка:', error));
+        });
+    </script>
+}

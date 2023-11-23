@@ -1,0 +1,53 @@
+﻿@model TDList.Models.User
+@using System.Security.Claims;
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>TDList</title>
+	<link rel="stylesheet" href="~/css/Lkss.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+
+<header class="container">
+	<div class="panels" style="display: flex;flex-direction: column;align-items: center;gap: 20px;">
+
+		<div class="flog">
+			<div class="log" style="display: flex; justify-content: space-around; margin-top: 20px;">
+				<h3 class="Username" style="margin-bottom: 100px; color: @(Model.RoleName == "Admin" ? "red" : "green");">
+					@Model.RoleName
+				</h3>
+			</div>
+						<div class="Edit">
+							@if (User.Identity.IsAuthenticated && Model.Id == int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)))
+							{
+					         <a asp-controller="Users" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btt">Редактирование пароля</a>
+							}
+						</div>
+		</div>
+		    <div class="sss2" style="font-size: xx-large;font-weight: 700; color: white;">
+						<div class="ss2">
+							<p>@Model.Login</p>
+						</div>
+			  <div class="ss2">
+				<p>@Model.Email</p>
+				<p style="color: @(Model.IsConfirmed ? "green" : "red");">
+					@if (Model.IsConfirmed)
+					{
+						<p>Почта подтверждена!</p>
+			    	}
+					else
+					{
+						<p>Почта не подтверждена </p>
+					    <a class="btn btn-success" asp-controller="Account" asp-action="Werifications" asp-route-id="@int.Parse(userManager.GetUserId(User))">Подтвердить почту</a>
+					}
+				</p>
+			</div>
+			<div>
+				<a class="btn btn-success" asp-controller="Users" asp-action="MailPost" asp-route-id="@int.Parse(userManager.GetUserId(User))">Отправить данные на почту</a>
+			</div>
+			</div>
+	</div>
+</header>

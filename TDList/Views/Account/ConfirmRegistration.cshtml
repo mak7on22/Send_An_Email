@@ -1,0 +1,24 @@
+﻿@model TDList.ViewModels.ConfirmRegistrationViewModel
+
+
+
+
+
+
+
+
+
+
+<div class="sdsdd" style="display: flex;flex-direction: column; align-items: center;">
+                      <h2 style="color:white;">Подтверждение регистрации</h2>
+              <form method="post" asp-controller="Account" asp-action="ConfirmRegistration">
+                  <div asp-validation-summary="ModelOnly"></div>
+                  <input type="hidden" asp-for="Email" value="@ViewData["Email"]" />
+                    <div class="form-fieldset ui-input">
+                      <label asp-for="ConfirmationCode" style="color: white;">Введите код подтверждения</label>
+                      <input asp-for="ConfirmationCode" type="number" class="form-control" />
+                      <span asp-validation-for="ConfirmationCode" class="text-danger"></span>
+                    </div>
+                <button type="submit" style="margin-top:10px;" class="btn btn-success">Подтвердить</button>
+              </form>
+</div>
