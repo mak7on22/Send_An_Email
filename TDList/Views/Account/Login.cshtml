@@ -1,13 +1,15 @@
 ﻿@model TDList.ViewModels.LoginViewModel
-
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Login";
+    string statusError5 = ViewData["StatusErrorLog"] as string;
 }
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TDList</title>
+    <title>@ViewData["Title"] @Localizer["ТД-Лист"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/RegLog.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TDList.styles.css" asp-append-version="true" />
@@ -15,39 +17,65 @@
 
 
 <div class="container">
-    <h1>TDList</h1>
-    <h2>Вход</h2>
+    <h1>@Localizer["ТД-Лист"]</h1>
+    <h2>@Localizer["Авторизация"]</h2>
     <form class="form" method="post" asp-controller="Account" asp-action="Login">
         <div asp-validation-summary="ModelOnly"></div>
         <fieldset class="form-fieldset ui-input __second">
-            <input type="text" placeholder="Логин или ваш Email" id="email" tabindex="0" asp-for="Email" />
+            <input type="text" placeholder="@Localizer["Логин или ваш Email"]" id="email" tabindex="0" asp-for="Email" />
             <label for="email" asp-for="Email">
-                <span data-text="E-mail Address" asp-validation-for="Email">E-mail адрес</span>
+                <span data-text="E-mail Address" asp-validation-for="Email">@Localizer["Логин или ваш Email"]</span>
             </label>
         </fieldset>
 
         <fieldset class="form-fieldset ui-input __third">
-            <input type="password" placeholder="Ваш пароль" id="new-password" asp-for="Password" />
-            <label for="new-password" asp-for="Password">
-                <span data-text="New Password" asp-validation-for="Password">Введите пароль</span>
+            <div style="display:flex;align-items: center;">
+            <input type="password" placeholder="@Localizer["Введите пароль"]" id="new-password" asp-for="Password" />
+                <ion-icon style="width: 30px;height: 30px;" name="eye-outline"></ion-icon>
+            </div>
+            <label style="position: relative; display: block; padding: 8px 0 8px 0; text-transform: uppercase; font-size: 14px; letter-spacing: .0875em; font-weight: 500; text-align: left;" for="new-password" asp-for="Password">
+                <span data-text="New Password" asp-validation-for="Password">@Localizer["Введите пароль"]</span>
             </label>
         </fieldset>
-
-
         <fieldset class="form-fieldset ui-input __fourth">
             <label class="containers" asp-for="RememberMe">
-                <input type="checkbox" asp-for="RememberMe"><p>Запомнить?</p>
+                <input type="checkbox" asp-for="RememberMe"><p>@Localizer["Запомнить?"]</p>
                 <svg viewBox="0 0 64 64" height="2em" width="2em">
                     <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="path"></path>
                 </svg>
             </label>
         </fieldset>
-
-        <div class="form-footer">
-            <button type="submit" class="btn">Войти</button>
+        <div class="form-group" style="color: red;">
+            @Localizer[$"{statusError5}"]
         </div>
+        <div class="form-footer">
+            <button type="submit" class="btn">@Localizer["Войти"]</button>
+        </div>
+        <div style="display:flex;gap:10px;margin: 11px -20px 0 -20px;"><a style="text-decoration: auto;color: aqua;font-weight: 500;" asp-area="" asp-controller="Account" asp-action="Resurrection">@Localizer["Забыли пароль?"]</a><a style="text-decoration: auto;color: aqua;font-weight: 500;" asp-area="" asp-controller="Account" asp-action="Register">@Localizer["Зарегистрироваться"]</a></div>
     </form>
 </div>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let eyeIcons = document.querySelectorAll('ion-icon[name="eye-outline"]');
+        let passwordFields = document.querySelectorAll('input[type="password"]');
+        eyeIcons.forEach(function (eyeIcon, index) {
+            eyeIcon.addEventListener('click', function () {
+                if (passwordFields[index].type === "password") {
+                    passwordFields[index].type = "text";
+                    eyeIcon.setAttribute('name', 'eye-off-outline');
+                } else {
+                    passwordFields[index].type = "password";
+                    eyeIcon.setAttribute('name', 'eye-outline');
+                }
+            });
+        });
+    });
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="~/js/RegLog.js" asp-append-version="true"></script>
 @section Scripts {
     @{

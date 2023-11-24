@@ -1,0 +1,20 @@
+﻿@model TDList.ViewModels.ResurrectionViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <h2>@Localizer["Восстановление пароля."]</h2>
+        <h2>@Localizer["Для востановления введите почту и мы отправим вам новый пароль."]</h2>
+    </div>
+@using (Html.BeginForm("Resurrection", "Account", FormMethod.Post))
+{
+        <div style="display: flex; flex-direction: column;">
+            <label style="color:white;" asp-for="Email">@Localizer["E-mail адрес"]</label>
+            <input required placeholder="@Localizer["E-mail адрес"]" asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+            <button class="btn btn-success" style="margin-top:10px;" type="submit">@Localizer["Отправить"]</button>
+        </div>
+
+    
+}
+</div>

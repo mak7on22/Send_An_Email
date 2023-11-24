@@ -41,10 +41,10 @@
                     else
                     {
                             <li class="nav-item ssa">
-                                <a class="nav-link ssa2" asp-area="" asp-controller="Account" asp-action="Login" style="color: #046666; font-size: large; font-weight: 700;">Вход</a>
+                                <a class="nav-link ssa2" asp-area="" asp-controller="Account" asp-action="Login" style="color: #046666; font-size: large; font-weight: 700;">@Localizer["Вход"]</a>
                             </li>
                             <li class="nav-item ssa">
-                                <a class="nav-link ssa2" asp-area="" asp-controller="Account" asp-action="Register" style="color: #046666; font-size: large; font-weight: 700;">Регистрация</a>
+                                <a class="nav-link ssa2" asp-area="" asp-controller="Account" asp-action="Register" style="color: #046666; font-size: large; font-weight: 700;">@Localizer["Регистрация"]</a>
                             </li>
 
                     }
@@ -57,19 +57,19 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="/Goals/ChangeCulture?culture=ru-RU">
+                                        <a class="dropdown-item" href="/Account/ChangeCulture?culture=ru-RU">
                                             <img src="/img/ru.png" alt="Русский" style="height: 30px;" />
                                             @Localizer["Русский"]
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="/Goals/ChangeCulture?culture=en-US">
+                                    <a class="dropdown-item" href="/Account/ChangeCulture?culture=en-US">
                                             <img src="/img/us.png" alt="English" style="height: 30px;" />
                                             @Localizer["Английский"]
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="/Goals/ChangeCulture?culture=zh-CN">
+                                    <a class="dropdown-item" href="/Account/ChangeCulture?culture=zh-CN">
                                             <img src="/img/ch.png" alt="China" style="height: 30px;" />
                                             @Localizer["中国人"]
                                         </a>

@@ -40,14 +40,14 @@ namespace TDList
             });
             builder.Services.Configure<RequestLocalizationOptions>(options =>
             {
-                var supportedCultures = new[]
-                {
-                    new CultureInfo("ru-RU"),
-                    new CultureInfo("en-US"),
-                    new CultureInfo("zh-CN"),
-                };
                 options.DefaultRequestCulture = new RequestCulture("ru-RU");
-                options.SupportedUICultures = supportedCultures;
+                options.SupportedUICultures = new List<CultureInfo>
+                {
+                 new CultureInfo("ru-RU"),
+                 new CultureInfo("en-US"),
+                 new CultureInfo("zh-CN"),
+                };
+                options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
             });
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             string connection = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -59,7 +59,8 @@ namespace TDList
                    options.Password.RequireLowercase = false;
                    options.Password.RequireUppercase = false;
                    options.Password.RequireDigit = false;
-               }).AddEntityFrameworkStores<TDLContext>();
+               }).AddEntityFrameworkStores<TDLContext>()
+                 .AddDefaultTokenProviders();
             builder.Services.AddTransient<UserService>();
             builder.Services.AddDbContext<TDLContext>(options => options.UseNpgsql(connection));
             var app = builder.Build();
@@ -82,10 +83,8 @@ namespace TDList
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.Use(async (context, next) =>
             {
                 var selectedCulture = context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName];
@@ -99,7 +98,6 @@ namespace TDList
                 }
                 await next();
             });
-
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

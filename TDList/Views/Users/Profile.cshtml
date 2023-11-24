@@ -1,10 +1,13 @@
 ﻿@model TDList.Models.User
 @using System.Security.Claims;
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
 
-
+}
 <head>
 	<meta charset="UTF-8">
-	<title>TDList</title>
+	<title>@Localizer["ТД-Лист"]</title>
 	<link rel="stylesheet" href="~/css/Lkss.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,13 +20,13 @@
 		<div class="flog">
 			<div class="log" style="display: flex; justify-content: space-around; margin-top: 20px;">
 				<h3 class="Username" style="margin-bottom: 100px; color: @(Model.RoleName == "Admin" ? "red" : "green");">
-					@Model.RoleName
+					@Localizer[$"{@Model.RoleName}"]
 				</h3>
 			</div>
 						<div class="Edit">
 							@if (User.Identity.IsAuthenticated && Model.Id == int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)))
 							{
-					         <a asp-controller="Users" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btt">Редактирование пароля</a>
+					<a asp-controller="Users" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btt">@Localizer["Редактирование пароля"]</a>
 							}
 						</div>
 		</div>
@@ -36,17 +39,17 @@
 				<p style="color: @(Model.IsConfirmed ? "green" : "red");">
 					@if (Model.IsConfirmed)
 					{
-						<p>Почта подтверждена!</p>
+					<p style="color:lime;">@Localizer["Почта подтверждена!"]</p>
 			    	}
 					else
 					{
-						<p>Почта не подтверждена </p>
-					    <a class="btn btn-success" asp-controller="Account" asp-action="Werifications" asp-route-id="@int.Parse(userManager.GetUserId(User))">Подтвердить почту</a>
+					<p style="color:indianred;">@Localizer["Почта не подтверждена"]</p>
+					<a class="btn btn-success" asp-controller="Account" asp-action="Werifications" asp-route-id="@int.Parse(userManager.GetUserId(User))">@Localizer["Подтвердить почту"]</a>
 					}
 				</p>
 			</div>
 			<div>
-				<a class="btn btn-success" asp-controller="Users" asp-action="MailPost" asp-route-id="@int.Parse(userManager.GetUserId(User))">Отправить данные на почту</a>
+				<a class="btn btn-success" asp-controller="Users" asp-action="MailPost" asp-route-id="@int.Parse(userManager.GetUserId(User))">@Localizer["Отправить данные на почту"]</a>
 			</div>
 			</div>
 	</div>
