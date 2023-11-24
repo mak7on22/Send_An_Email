@@ -1,11 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
+using System.Text;
 using TDList.Models;
 using TDList.Servises;
 using TDList.ViewModels;
+using System.Resources;
+using System.Globalization;
+
 
 namespace TDList.Controllers
 {
@@ -37,9 +42,9 @@ namespace TDList.Controllers
                 var existingUserEmail = await _userManager.FindByEmailAsync(model.Email);
 
                 if (existingUserLogin != null)
-                    ModelState.AddModelError(string.Empty, "Пользователь с таким Login уже существует.");
+                    ViewData["StatusError"] = "Пользователь с таким Login уже существует.";
                 if (existingUserEmail != null)
-                    ModelState.AddModelError(string.Empty, "Пользователь с таким Email уже существует.");
+                    ViewData["StatusErrors"] = "Пользователь с таким Email уже существует.";
                 if (existingUserLogin != null || existingUserEmail != null)
                     return View(model);
                 User user = new User
@@ -109,13 +114,13 @@ namespace TDList.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Пользователь не найден.");
+                    ViewData["StatusErrorUser"] = "Пользователь не найден.";
                     return View();
                 }
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Неверный код подтверждения. Пожалуйста, повторите попытку.");
+                ViewData["StatusErrorCode"] = "Неверный код подтверждения. Пожалуйста, повторите попытку.";
                 return View();
             }
         }
@@ -156,8 +161,7 @@ namespace TDList.Controllers
                                 return RedirectToAction("Index", "Goals");
                         }
                     }
-
-                    ModelState.AddModelError("", "Неправильный логин или пароль");
+                ViewData["StatusErrorLog"] = "Неправильный логин или пароль";
                 }
                 return View(model);
             }
@@ -174,5 +178,107 @@ namespace TDList.Controllers
             {
                 return View();
             }
+        [HttpGet]
+        public IActionResult Resurrection()
+        {
+            return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Resurrection(ResurrectionViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    string newPassword = GenerateRandomPassword();
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
+                    if (result.Succeeded)
+                    {
+                        var preferredCulture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
+                        Console.WriteLine($"Preferred culture: {preferredCulture}");
+                        string message;
+                        string subject;
+                        if (preferredCulture == "ru-RU")
+                        {
+                            subject = "Сброс пароля";
+                            message = $"<div style=\"background-color: #181530; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; align-items: center;\"><div style=\"color: white;font-size: x-large;font-weight: 700;\">Здравствуйте, {user.UserName}!</div></br><div style=\"color: white;font-weight: 600;font-size: large;\">Пароль был успешно изменен!</div></br><div style=\"color: white;font-weight: 500;font-size: large;\"><p>Ваш логин: {user.Login}</p></br><p>Ваш новый пароль: {newPassword}</p></br></div></br><div style=\"color:white; font-size: x-large; font-weight: 600;\">Спасибо за выбор нашего сервиса!</div></div>";
+                        }
+                        else if (preferredCulture == "en-US")
+                        {
+                            subject = "Password Reset";
+                            message = $"<div style=\"background-color: #181530; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; align-items: center;\"><div style=\"color: white;font-size: x-large;font-weight: 700;\">Hello, {user.UserName}!</div></br><div style=\"color: white;font-weight: 600;font-size: large;\">The password has been successfully changed!</div></br><div style=\"color: white;font-weight: 500;font-size: large;\"><p>Your login: {user.Login}</p></br><p>Your new password: {newPassword}</p></br></div></br><div style=\"color:white; font-size: x-large; font-weight: 600;\">Thank you for choosing our service!</div></div>";
+                        }
+                        else if (preferredCulture == "zh-CN")
+                        {
+                            subject = "密码重置";
+                            message = $"<div style=\"background-color: #181530; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; align-items: center;\"><div style=\"color: white;font-size: x-large;font-weight: 700;\">你好！, {user.UserName}!</div></br><div style=\"color: white;font-weight: 600;font-size: large;\">密码已成功更改！</div></br><div style=\"color: white;font-weight: 500;font-size: large;\"><p>你的登入: {user.Login}</p></br><p>您的新密码: {newPassword}</p></br></div></br><div style=\"color:white; font-size: x-large; font-weight: 600;\">感谢您选择我们的服务!</div></div>";
+                        }
+                        else
+                        {
+                            subject = "Password Reset";
+                            message = $"<div style=\"background-color: #181530; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; align-items: center;\"><div style=\"color: white;font-size: x-large;font-weight: 700;\">Hello, {user.UserName}!</div></br><div style=\"color: white;font-weight: 600;font-size: large;\">The password has been successfully changed!</div></br><div style=\"color: white;font-weight: 500;font-size: large;\"><p>Your login: {user.Login}</p></br><p>Your new password: {newPassword}</p></br></div></br><div style=\"color:white; font-size: x-large; font-weight: 600;\">Thank you for choosing our service!</div></div>";
+                        }
+
+                        await _emailSendler.SendEmailAsync(user.Email, subject, message);
+
+                        return RedirectToAction("Index", "Goals");
+                    }
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Пользователь с указанным адресом электронной почты не найден.");
+                }
+            }
+            return View(model);
+        }
+        private string GenerateRandomPassword()
+        {
+            var password = new StringBuilder();
+            var random = new Random();
+            for (int i = 0; i < 12; i++)
+            {
+                string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+                char randomChar = characters[random.Next(characters.Length)];
+                password.Append(randomChar);
+            }
+
+            return password.ToString();
+        }
+        public IActionResult ChangeCulture(string culture)
+        {
+            CultureInfo preferredCulture = CultureInfo.CurrentCulture;
+
+            var cultureInfo = new CultureInfo(culture);
+            var requestCulture = new RequestCulture(cultureInfo);
+            var cookieValue = CookieRequestCultureProvider.MakeCookieValue(requestCulture);
+
+            Response.Cookies.Append(
+     CookieRequestCultureProvider.DefaultCookieName,
+     cookieValue,
+     new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+ );
+
+            Console.WriteLine($"Changed culture to: {culture}");
+            Console.WriteLine($"Culture in ChangeCulture method: {CultureInfo.CurrentCulture}");
+
+            var preferredCultureCookie = HttpContext.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName];
+            if (!string.IsNullOrEmpty(preferredCultureCookie))
+            {
+                var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
+                preferredCulture = requestCultureFeature?.RequestCulture?.Culture ?? CultureInfo.CurrentCulture;
+            }
+            Console.WriteLine($"Preferred culture (from cookie): {preferredCulture}");
+
+            return Redirect(Request.Headers["Referer"].ToString() ?? "/");
+        }
+    }
 }

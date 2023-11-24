@@ -260,19 +260,8 @@ namespace TDList.Controllers
                 return View(nameof(Index), await _context.Goals.ToListAsync());
             }
         }
-        public IActionResult ChangeCulture(string culture)
-        {
-            var cultureInfo = new CultureInfo(culture);
-            var requestCulture = new RequestCulture(cultureInfo);
-            var cookieValue = CookieRequestCultureProvider.MakeCookieValue(requestCulture);
+       
 
-            Response.Cookies.Append(
-                CookieRequestCultureProvider.DefaultCookieName,
-                cookieValue,
-                new CookieOptions{  Expires = DateTimeOffset.UtcNow.AddYears(1)}
-            );
-            return Redirect(Request.Headers["Referer"].ToString() ?? "/");
-        }
 
     }
 }

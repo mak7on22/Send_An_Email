@@ -61,10 +61,12 @@ namespace TDList.Controllers
                     return Json(new { success = true });
                 }
                 else
-                    return Json(new { success = false, message = "Ошибка при изменении пароля", errors = result.Errors });
+					ViewData["StatusError"] = "Ошибка при изменении пароля";
+				return Json(new { success = false, message = "", errors = result.Errors });
             }
             else
-                return Json(new { success = false, message = "Пользователь не найден" });
+				ViewData["StatusErrors"] = "Пользователь не найден";
+			return Json(new { success = false, message = "" });
             
         }
         [HttpGet]
