@@ -117,28 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Английский" xml:space="preserve">
-    <value>English</value>
+  <data name="Admin" xml:space="preserve">
+    <value>Админ</value>
   </data>
-  <data name="Все задачи" xml:space="preserve">
-    <value>所有任务</value>
+  <data name="Manager" xml:space="preserve">
+    <value>Мененджер</value>
   </data>
-  <data name="Вход" xml:space="preserve">
-    <value>入口</value>
+  <data name="Member" xml:space="preserve">
+    <value>Пользователь</value>
   </data>
-  <data name="Добавить новую задачу" xml:space="preserve">
-    <value>添加新任务</value>
+  <data name="Отправить данные на почту" xml:space="preserve">
+    <value>Отправить данные на почту</value>
   </data>
-  <data name="Китайский" xml:space="preserve">
-    <value>中国人</value>
+  <data name="Подтвердить почту" xml:space="preserve">
+    <value>Подтвердить почту</value>
   </data>
-  <data name="Регистрация" xml:space="preserve">
-    <value>登记注册</value>
+  <data name="Почта не подтверждена" xml:space="preserve">
+    <value>Почта не подтверждена</value>
   </data>
-  <data name="Русский" xml:space="preserve">
-    <value>Русский</value>
+  <data name="Почта подтверждена!" xml:space="preserve">
+    <value>Почта подтверждена!</value>
+  </data>
+  <data name="Редактирование пароля" xml:space="preserve">
+    <value>Редактирование пароля</value>
   </data>
   <data name="ТД-Лист" xml:space="preserve">
-    <value>列表</value>
+    <value>ТД-Лист</value>
   </data>
 </root>

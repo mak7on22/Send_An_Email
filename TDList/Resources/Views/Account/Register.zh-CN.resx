@@ -117,28 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Английский" xml:space="preserve">
-    <value>English</value>
+  <data name="E-mail адрес" xml:space="preserve">
+    <value>电邮地址</value>
   </data>
-  <data name="Все задачи" xml:space="preserve">
-    <value>所有任务</value>
+  <data name="Ваше имя" xml:space="preserve">
+    <value>你的名字</value>
   </data>
-  <data name="Вход" xml:space="preserve">
-    <value>入口</value>
+  <data name="Введите пароль" xml:space="preserve">
+    <value>输入密码</value>
   </data>
-  <data name="Добавить новую задачу" xml:space="preserve">
-    <value>添加新任务</value>
+  <data name="Логин" xml:space="preserve">
+    <value>登入</value>
   </data>
-  <data name="Китайский" xml:space="preserve">
-    <value>中国人</value>
+  <data name="Неверный код подтверждения. Пожалуйста, повторите попытку." xml:space="preserve">
+    <value>确认码无效。 请再试一次。</value>
+  </data>
+  <data name="Неправильный логин или пароль." xml:space="preserve">
+    <value>登入或密码不正确</value>
+  </data>
+  <data name="Повторите пароль" xml:space="preserve">
+    <value>重复密码</value>
+  </data>
+  <data name="Пользователь не найден." xml:space="preserve">
+    <value>未找到用户。</value>
+  </data>
+  <data name="Пользователь с таким Email уже существует." xml:space="preserve">
+    <value>已存在具有此电子邮件的用户。</value>
+  </data>
+  <data name="Пользователь с таким Login уже существует." xml:space="preserve">
+    <value>已存在具有此登录名的用户。</value>
   </data>
   <data name="Регистрация" xml:space="preserve">
     <value>登记注册</value>
   </data>
-  <data name="Русский" xml:space="preserve">
-    <value>Русский</value>
+  <data name="Создать" xml:space="preserve">
+    <value>要创建</value>
   </data>
   <data name="ТД-Лист" xml:space="preserve">
-    <value>列表</value>
+    <value>运输署-名单</value>
   </data>
 </root>

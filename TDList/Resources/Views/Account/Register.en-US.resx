@@ -117,28 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Английский" xml:space="preserve">
-    <value>English</value>
+  <data name="E-mail адрес" xml:space="preserve">
+    <value>E-mail address</value>
   </data>
-  <data name="Все задачи" xml:space="preserve">
-    <value>所有任务</value>
+  <data name="Ваше имя" xml:space="preserve">
+    <value>Your name</value>
   </data>
-  <data name="Вход" xml:space="preserve">
-    <value>入口</value>
+  <data name="Введите пароль" xml:space="preserve">
+    <value>Enter the password</value>
   </data>
-  <data name="Добавить новую задачу" xml:space="preserve">
-    <value>添加新任务</value>
+  <data name="Логин" xml:space="preserve">
+    <value>Login</value>
   </data>
-  <data name="Китайский" xml:space="preserve">
-    <value>中国人</value>
+  <data name="Неверный код подтверждения. Пожалуйста, повторите попытку." xml:space="preserve">
+    <value>Invalid confirmation code. Please try again.</value>
+  </data>
+  <data name="Неправильный логин или пароль." xml:space="preserve">
+    <value>Incorrect login or password.</value>
+  </data>
+  <data name="Повторите пароль" xml:space="preserve">
+    <value>Repeat the password</value>
+  </data>
+  <data name="Пользователь не найден." xml:space="preserve">
+    <value>The user was not found.</value>
+  </data>
+  <data name="Пользователь с таким Email уже существует." xml:space="preserve">
+    <value>A user with this Email already exists.</value>
+  </data>
+  <data name="Пользователь с таким Login уже существует." xml:space="preserve">
+    <value>A user with this Login already exists.</value>
   </data>
   <data name="Регистрация" xml:space="preserve">
-    <value>登记注册</value>
+    <value>Registration</value>
   </data>
-  <data name="Русский" xml:space="preserve">
-    <value>Русский</value>
+  <data name="Создать" xml:space="preserve">
+    <value>To create</value>
   </data>
   <data name="ТД-Лист" xml:space="preserve">
-    <value>列表</value>
+    <value>TD-List</value>
   </data>
 </root>

@@ -117,28 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Английский" xml:space="preserve">
-    <value>English</value>
+  <data name="E-mail адрес" xml:space="preserve">
+    <value>E-mail address</value>
   </data>
-  <data name="Все задачи" xml:space="preserve">
-    <value>所有任务</value>
+  <data name="Восстановление пароля." xml:space="preserve">
+    <value>Password recovery.</value>
   </data>
-  <data name="Вход" xml:space="preserve">
-    <value>入口</value>
+  <data name="Для востановления введите почту и мы отправим вам новый пароль." xml:space="preserve">
+    <value>To restore, enter your email and we will send you a new password.</value>
   </data>
-  <data name="Добавить новую задачу" xml:space="preserve">
-    <value>添加新任务</value>
-  </data>
-  <data name="Китайский" xml:space="preserve">
-    <value>中国人</value>
-  </data>
-  <data name="Регистрация" xml:space="preserve">
-    <value>登记注册</value>
-  </data>
-  <data name="Русский" xml:space="preserve">
-    <value>Русский</value>
-  </data>
-  <data name="ТД-Лист" xml:space="preserve">
-    <value>列表</value>
+  <data name="Отправить" xml:space="preserve">
+    <value>Send</value>
   </data>
 </root>

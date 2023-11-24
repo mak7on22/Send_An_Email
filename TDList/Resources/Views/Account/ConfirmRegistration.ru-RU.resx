@@ -117,28 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Английский" xml:space="preserve">
-    <value>English</value>
+  <data name="Введите код подтверждения" xml:space="preserve">
+    <value>Введите код подтверждения</value>
   </data>
-  <data name="Все задачи" xml:space="preserve">
-    <value>所有任务</value>
+  <data name="Неверный код подтверждения. Пожалуйста, повторите попытку." xml:space="preserve">
+    <value>Неверный код подтверждения. Пожалуйста, повторите попытку.</value>
   </data>
-  <data name="Вход" xml:space="preserve">
-    <value>入口</value>
+  <data name="Подтвердить" xml:space="preserve">
+    <value>Подтвердить</value>
   </data>
-  <data name="Добавить новую задачу" xml:space="preserve">
-    <value>添加新任务</value>
+  <data name="Подтверждение регистрации" xml:space="preserve">
+    <value>Подтверждение регистрации</value>
   </data>
-  <data name="Китайский" xml:space="preserve">
-    <value>中国人</value>
-  </data>
-  <data name="Регистрация" xml:space="preserve">
-    <value>登记注册</value>
-  </data>
-  <data name="Русский" xml:space="preserve">
-    <value>Русский</value>
-  </data>
-  <data name="ТД-Лист" xml:space="preserve">
-    <value>列表</value>
+  <data name="Пользователь не найден" xml:space="preserve">
+    <value>Пользователь не найден</value>
   </data>
 </root>

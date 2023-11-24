@@ -117,28 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Английский" xml:space="preserve">
-    <value>English</value>
+  <data name="E-mail адрес" xml:space="preserve">
+    <value>E-mail адрес</value>
   </data>
-  <data name="Все задачи" xml:space="preserve">
-    <value>所有任务</value>
+  <data name="Ваше имя" xml:space="preserve">
+    <value>Ваше имя</value>
   </data>
-  <data name="Вход" xml:space="preserve">
-    <value>入口</value>
+  <data name="Введите пароль" xml:space="preserve">
+    <value>Введите пароль</value>
   </data>
-  <data name="Добавить новую задачу" xml:space="preserve">
-    <value>添加新任务</value>
+  <data name="Логин" xml:space="preserve">
+    <value>Логин</value>
   </data>
-  <data name="Китайский" xml:space="preserve">
-    <value>中国人</value>
+  <data name="Неверный код подтверждения. Пожалуйста, повторите попытку." xml:space="preserve">
+    <value>Неверный код подтверждения. Пожалуйста, повторите попытку.</value>
+  </data>
+  <data name="Неправильный логин или пароль" xml:space="preserve">
+    <value>Неправильный логин или пароль</value>
+  </data>
+  <data name="Повторите пароль" xml:space="preserve">
+    <value>Повторите пароль</value>
+  </data>
+  <data name="Пользователь не найден." xml:space="preserve">
+    <value>Пользователь не найден.</value>
+  </data>
+  <data name="Пользователь с таким Email уже существует." xml:space="preserve">
+    <value>Пользователь с таким Email уже существует.</value>
+  </data>
+  <data name="Пользователь с таким Login уже существует." xml:space="preserve">
+    <value>Пользователь с таким Login уже существует.</value>
   </data>
   <data name="Регистрация" xml:space="preserve">
-    <value>登记注册</value>
+    <value>Регистрация</value>
   </data>
-  <data name="Русский" xml:space="preserve">
-    <value>Русский</value>
+  <data name="Создать" xml:space="preserve">
+    <value>Создать</value>
   </data>
   <data name="ТД-Лист" xml:space="preserve">
-    <value>列表</value>
+    <value>ТД-Лист</value>
   </data>
 </root>

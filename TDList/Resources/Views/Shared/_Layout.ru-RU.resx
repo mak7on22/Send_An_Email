@@ -123,11 +123,17 @@
   <data name="Все задачи" xml:space="preserve">
     <value>Все задачи</value>
   </data>
+  <data name="Вход" xml:space="preserve">
+    <value>Вход</value>
+  </data>
   <data name="Добавить новую задачу" xml:space="preserve">
     <value>Добавить новую задачу</value>
   </data>
   <data name="Китайский" xml:space="preserve">
     <value>中国人</value>
+  </data>
+  <data name="Регистрация" xml:space="preserve">
+    <value>Регистрация</value>
   </data>
   <data name="Русский" xml:space="preserve">
     <value>Русский</value>

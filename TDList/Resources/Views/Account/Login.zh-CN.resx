@@ -117,28 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Английский" xml:space="preserve">
-    <value>English</value>
+  <data name="Авторизация" xml:space="preserve">
+    <value>授权书</value>
   </data>
-  <data name="Все задачи" xml:space="preserve">
-    <value>所有任务</value>
+  <data name="Введите пароль" xml:space="preserve">
+    <value>输入密码</value>
   </data>
-  <data name="Вход" xml:space="preserve">
-    <value>入口</value>
+  <data name="Войти" xml:space="preserve">
+    <value>进入</value>
   </data>
-  <data name="Добавить новую задачу" xml:space="preserve">
-    <value>添加新任务</value>
+  <data name="Забыли пароль?" xml:space="preserve">
+    <value>忘记密码？</value>
   </data>
-  <data name="Китайский" xml:space="preserve">
-    <value>中国人</value>
+  <data name="Запомнить?" xml:space="preserve">
+    <value>记得吗？</value>
   </data>
-  <data name="Регистрация" xml:space="preserve">
-    <value>登记注册</value>
+  <data name="Зарегистрироваться" xml:space="preserve">
+    <value>登记册</value>
   </data>
-  <data name="Русский" xml:space="preserve">
-    <value>Русский</value>
+  <data name="Логин или ваш Email" xml:space="preserve">
+    <value>登入或电邮</value>
+  </data>
+  <data name="Неправильный логин или пароль" xml:space="preserve">
+    <value>登入或密码不正确</value>
   </data>
   <data name="ТД-Лист" xml:space="preserve">
-    <value>列表</value>
+    <value>运输署-名单</value>
   </data>
 </root>

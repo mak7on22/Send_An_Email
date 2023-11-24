@@ -117,28 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Английский" xml:space="preserve">
-    <value>English</value>
+  <data name="confirmPasswordError" xml:space="preserve">
+    <value>The entered data is incorrect!</value>
   </data>
-  <data name="Все задачи" xml:space="preserve">
-    <value>所有任务</value>
+  <data name="data.errors.ConfirmPassword" xml:space="preserve">
+    <value>The entered data is incorrect!</value>
   </data>
-  <data name="Вход" xml:space="preserve">
-    <value>入口</value>
+  <data name="data.errors.NewPassword" xml:space="preserve">
+    <value>The entered data is incorrect!</value>
   </data>
-  <data name="Добавить новую задачу" xml:space="preserve">
-    <value>添加新任务</value>
+  <data name="data.errors.PasswordHash" xml:space="preserve">
+    <value>The entered data is incorrect!</value>
   </data>
-  <data name="Китайский" xml:space="preserve">
-    <value>中国人</value>
+  <data name="data.message" xml:space="preserve">
+    <value>The entered data is incorrect!</value>
   </data>
-  <data name="Регистрация" xml:space="preserve">
-    <value>登记注册</value>
+  <data name="newPasswordError" xml:space="preserve">
+    <value>The entered data is incorrect!</value>
   </data>
-  <data name="Русский" xml:space="preserve">
-    <value>Русский</value>
+  <data name="passwordHashError" xml:space="preserve">
+    <value>The entered data is incorrect!</value>
   </data>
-  <data name="ТД-Лист" xml:space="preserve">
-    <value>列表</value>
+  <data name="undefined" xml:space="preserve">
+    <value>The entered data is incorrect!</value>
+  </data>
+  <data name="validationSummary" xml:space="preserve">
+    <value>The entered data is incorrect!</value>
+  </data>
+  <data name="Назад" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Новые пароли не совпадают" xml:space="preserve">
+    <value>The new passwords don't match</value>
+  </data>
+  <data name="Новый пароль" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="Ошибка при изменении пароля" xml:space="preserve">
+    <value>Error when changing the password</value>
+  </data>
+  <data name="Подтвердите новый пароль" xml:space="preserve">
+    <value>Confirm the new password</value>
+  </data>
+  <data name="Пользователь не найден" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+  <data name="Сохранить" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Старый пароль" xml:space="preserve">
+    <value>Old password</value>
   </data>
 </root>
